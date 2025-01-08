@@ -1,22 +1,22 @@
 const word_list = [
-    "Test",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "11",
-    "12",
-    "13",
-    "14",
-    "15",
-    "16",
-    "17",
-    "18",
+    "Call at convenience store",
+    "5 or more censored bleeps for a person",
+    "K9 searches suspect",
+    "You see something on fire",
+    "No ID",
+    "Cop running or jogging",
+    "Wad of cash",
+    "Call at a fast food restaurant",
+    "Shoplifting",
+    "Resisting arrest",
+    "Pulled over on a bicycle",
+    "Motorcycle chase",
+    "Find pills",
+    `"Not my car"`,
+    "Possession with intent to distribute",
+    "Cop drives off road or over median",
+    "Forced entry",
+    "Sovereign Citizen",
     "19",
     "20",
     "21",
@@ -55,7 +55,13 @@ for (let i = 0; i < 5; i++)
         cell.id = i + j
 
         let textContainer = document.createElement("div")
-        textContainer.innerHTML = `${shuffledList[i * 5 + j]}`
+        if (i == 2 && j == 2) {
+            textContainer.innerHTML = `Free Space`
+            cell.classList.add("free-cell")
+        }
+        else {
+            textContainer.innerHTML = `${shuffledList[i * 5 + j]}`
+        }  
         textContainer.className = "cell-square"
 
         cell.appendChild(textContainer)
@@ -65,13 +71,18 @@ for (let i = 0; i < 5; i++)
             let myColumn = j;
 
             console.log(`${i}, ${j}`);
-            if (cell.classList.contains("selected-cell"))
-            {
-                cell.classList.remove("selected-cell")
-            }
-            else
-            {
+            if (i == 2 && j == 2) {
                 cell.classList.add("selected-cell")
+            }
+            else {
+                if (cell.classList.contains("selected-cell"))
+                {
+                    cell.classList.remove("selected-cell")
+                }
+                else
+                {
+                    cell.classList.add("selected-cell")
+                }
             }
         }
         row.appendChild(cell)
@@ -93,8 +104,6 @@ clear_button.onclick = function() {
     {
         clickedCells[i].classList.remove("selected-cell")
     }
-
-    
 }
 
 }
