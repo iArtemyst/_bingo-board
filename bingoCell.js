@@ -82,8 +82,8 @@ for (let i = 0; i < 5; i++)
         }
         else {
             textContainer.innerHTML = `${shuffledList[i * 5 + j]}`
+            cell.classList.add("cell-square")
         }  
-        textContainer.className = "cell-square"
 
         cell.appendChild(textContainer)
         cell.onclick = function () 
@@ -92,18 +92,16 @@ for (let i = 0; i < 5; i++)
             let myColumn = j;
 
             console.log(`${i}, ${j}`);
-            if (i == 2 && j == 2) {
-                cell.classList.add("selected-cell")
+
+            if (cell.classList.contains("selected-cell"))
+            {
+                cell.classList.remove("selected-cell")
+                cell.classList.add("cell-square")
             }
-            else {
-                if (cell.classList.contains("selected-cell"))
-                {
-                    cell.classList.remove("selected-cell")
-                }
-                else
-                {
-                    cell.classList.add("selected-cell")
-                }
+            else
+            {
+                cell.classList.remove("cell-square")
+                cell.classList.add("selected-cell")
             }
         }
         row.appendChild(cell)
@@ -124,6 +122,7 @@ clear_button.onclick = function() {
     for (let i = 0; i < clickedCells.length; i++)
     {
         clickedCells[i].classList.remove("selected-cell")
+        clickedCells[i].classList.add("cell-square")
     }
 }
 
