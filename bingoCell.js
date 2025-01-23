@@ -77,7 +77,7 @@ for (let i = 0; i < 5; i++)
 
         let textContainer = document.createElement("div")
         if (i == 2 && j == 2) {
-            textContainer.innerHTML = `Free Space`
+            textContainer.innerHTML = `Free to Go!`
             cell.classList.add("free-cell")
         }
         else {
