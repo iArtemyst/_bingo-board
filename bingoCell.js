@@ -63,6 +63,9 @@ window.onload = function ()
 let table = document.getElementById("bingoTable")
 let refresh_button = document.getElementById("refreshButton")
 let clear_button = document.getElementById("clearButton")
+let bingo_div = document.getElementById("bingoWinDiv")
+
+
 
 for (let i = 0; i < 5; i++)
 {
@@ -73,7 +76,7 @@ for (let i = 0; i < 5; i++)
     for (let j = 0; j < 5; j++)
     {
         let cell = document.createElement("td");
-        cell.id = i + j
+        cell.id = [i, j]
 
         let textContainer = document.createElement("div")
         if (i == 2 && j == 2) {
@@ -125,5 +128,4 @@ clear_button.onclick = function() {
         clickedCells[i].classList.add("cell-square")
     }
 }
-
 }

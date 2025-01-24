@@ -90,3 +90,19 @@ td {
     border-color: #FFFFFF;
     border-radius: 32px;
 }
+
+.bingo-cell
+{
+    position: relative;
+    text-align: center;
+    width: 20%;
+    background-color: #00ff6a;
+    border-width: 2px;
+    box-shadow: 5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    color: #fcfcfc;
+    border-width: 12px;
+    border-color: #FFFFFF;
+    border-radius: 32px;
+}

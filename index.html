@@ -7,10 +7,13 @@
     </head>
 
     <body>
+        <div class="w-dvw h-auto relative flex justify-center content-center">
+            <h1 class="text-4xl font-black font-sans w-auto h-auto pt-3 ">
+                BINGO!
+            </h1>
+        </div>
         <div class="w-dvw h-[95%] p-8 justify-evenly content-center">
-            <table id="bingoTable">
-                
-            </table>
+            <table id="bingoTable"></table>
         </div>
         <div class="w-[50%] h-auto flex absolute left-[50%] -translate-x-[50%] me-auto ms-auto p-3 justify-evenly">
             <button id="clearButton" class="text-l bg-gray-100 hover:bg-[#333333] border-none text-black hover:text-white font-bold border-2 rounded-2xl px-4 py-2 min-w-auto w-[40%] h-auto mx-4 text-nowrap">
@@ -20,6 +23,7 @@
                  New Board
             </button>
         </div>
+        <div id="bingoWinDiv"></div>
         <script src="bingoCell.js"></script>
     </body>
 </html>
