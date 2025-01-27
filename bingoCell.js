@@ -48,8 +48,17 @@ const word_list = [
     "Chasing suspect through thick brush or forest",
     "Noise distrubance",
     "Vehicle that is not upright",
-    "Child pulled over",
+    "Child in pulled over car",
     "Finding a weapon on a person",
+    "Finds heroin",
+    "Finds fentanyl",
+    "Offers food to cops",
+    "Responding to an overdose",
+    "Responding to a burglary",
+    "Located stolen weapon",
+    "Cop gives attitude back",
+    "Cop is called off to another scene",
+    "Suspect goes to homebase",
 ]
 
 let shuffledList = word_list
