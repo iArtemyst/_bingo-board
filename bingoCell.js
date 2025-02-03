@@ -59,6 +59,7 @@ const word_list = [
     "Cop gives attitude back",
     "Cop is called off to another scene",
     "Suspect goes to homebase",
+    "Officer deploys stop sticks",
 ]
 
 let shuffledList = word_list
@@ -72,8 +73,7 @@ window.onload = function ()
 let table = document.getElementById("bingoTable")
 let refresh_button = document.getElementById("refreshButton")
 let clear_button = document.getElementById("clearButton")
-let bingo_div = document.getElementById("bingoWinDiv")
-
+// let bingo_div = document.getElementById("bingoWinDiv")
 
 
 for (let i = 0; i < 5; i++)
@@ -119,10 +119,6 @@ for (let i = 0; i < 5; i++)
         row.appendChild(cell)
     }
 }
-
-
-refresh_button.style.display = "block"
-clear_button.style.display = "block"
 
 
 refresh_button.onclick = function() {
