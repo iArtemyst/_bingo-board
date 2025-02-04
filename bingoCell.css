@@ -210,3 +210,87 @@ td {
     top: 0em;
     scale: 90%;
 }
+
+
+.bingo-div{
+    background-color: var(--base-variant);
+    border: none;
+    width: 40%;
+    height: 30%;
+    padding: 2em;
+    border-radius: 3em;
+    justify-items: center;
+    justify-self: center;
+    align-content: center;
+    position: absolute;
+    display: flex;
+    z-index: 5;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+
+}
+
+.bingo-text{
+    font-size: x-large;
+    border: none;
+    color: var(--text-color);
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    text-align: center;
+    z-index: 5;
+    font-weight: 600;
+    text-wrap: nowrap;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.exit-button{
+    font-size: medium;
+    background-color: var(--base-color);
+    border: none;
+    color: var(--text-color);
+    padding-left: .75em;
+    padding-right: .75em;
+    padding-top: .35em;
+    padding-bottom: .35em;
+    width: auto;
+    height: auto;
+    margin-top: 1.5em;
+    margin-right: 1.5em;
+    border-radius: 1em;
+    font-weight: 600;
+    text-wrap: nowrap;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    position: absolute;
+    right: 0em;
+    top: 0em;
+    z-index: 5;
+}
+
+
+.exit-button:hover {
+    font-size: medium;
+    background-color: var(--base-variant);
+    border: none;
+    color: var(--hover-text);
+    padding-left: .75em;
+    padding-right: .75em;
+    padding-top: .35em;
+    padding-bottom: .35em;
+    width: auto;
+    height: auto;
+    margin-top: 1.5em;
+    margin-right: 1.5em;
+    border-radius: 1em;
+    font-weight: 600;
+    text-wrap: nowrap;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    position: absolute;
+    right: 0em;
+    top: 0em;
+    z-index: 5;
+}

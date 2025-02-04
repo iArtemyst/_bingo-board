@@ -73,8 +73,18 @@ window.onload = function ()
 let table = document.getElementById("bingoTable")
 let refresh_button = document.getElementById("refreshButton")
 let clear_button = document.getElementById("clearButton")
+let exit_button = document.getElementById("exitButton")
+let bingo_div = document.getElementById("bingoDiv")
 // let bingo_div = document.getElementById("bingoWinDiv")
 
+let selected_state = 
+[
+    [false, false, false, false, false],
+    [false, false, false, false, false],
+    [false, false, true, false, false],
+    [false, false, false, false, false],
+    [false, false, false, false, false],
+];
 
 for (let i = 0; i < 5; i++)
 {
@@ -85,9 +95,8 @@ for (let i = 0; i < 5; i++)
     for (let j = 0; j < 5; j++)
     {
         let cell = document.createElement("td");
-        cell.id = [i, j]
-
         let textContainer = document.createElement("div")
+
         if (i == 2 && j == 2) {
             textContainer.innerHTML = `Free to Go!`
             cell.classList.add("free-cell")
@@ -98,13 +107,18 @@ for (let i = 0; i < 5; i++)
         }  
 
         cell.appendChild(textContainer)
-        cell.onclick = function () 
+        
+        cell.onclick = () =>
         { 
-            let myRow = i;
-            let myColumn = j;
+            if (bingo_div.style.display != "none") {
+                return
+            }
 
-            console.log(`${i}, ${j}`);
-
+            if (i !== 2 || j !== 2)
+            {
+                selected_state[i][j] = !selected_state[i][j];
+            }
+            
             if (cell.classList.contains("selected-cell"))
             {
                 cell.classList.remove("selected-cell")
@@ -114,11 +128,76 @@ for (let i = 0; i < 5; i++)
             {
                 cell.classList.remove("cell-square")
                 cell.classList.add("selected-cell")
+
+                let bingo_column = true;
+                for (let r = 0; r < 5; r++)
+                {
+                    if (!selected_state[r][j])
+                    {
+                        bingo_column = false;
+                    }
+                }
+
+                let bingo_row = true;
+                for (let c = 0; c < 5; c++)
+                {
+                    if (!selected_state[i][c])
+                    {
+                        bingo_row = false;
+                    }
+                }
+
+                let bingo_diagonal1 = false;
+                if (i == j)
+                {
+                    bingo_diagonal1 = true;
+                    for (let d = 0; d < 5; d++)
+                    {
+                        if (!selected_state[d][d]) {
+                            bingo_diagonal1 = false;
+                        }
+                    }
+                }
+
+                let bingo_diagonal2 = false;
+                if (i + j == 4)
+                {
+                    if (selected_state[0][4] && 
+                        selected_state[1][3] && 
+                        selected_state[2][2] && 
+                        selected_state[3][1] && 
+                        selected_state[4][0])
+                    {
+                        bingo_diagonal2 = true;
+                    }
+                }
+                
+
+
+                if (bingo_column || bingo_row || bingo_diagonal1 || bingo_diagonal2)
+                {
+                    setTimeout(() => {
+                        bingo_div.style.display = "flex"
+                    }, 2);
+                }
             }
         }
+      
         row.appendChild(cell)
     }
+
+    window.onclick = (e) => {
+        console.log(window.getComputedStyle(e.target).getPropertyValue("z-index"))
+        if (bingo_div.style.display !== "none" && e.target.id !="themeButton" && window.getComputedStyle(e.target).getPropertyValue("z-index") != 5)
+        {
+            bingo_div.style.display = "none"
+        }
+    }
 }
+
+
+
+
 
 
 refresh_button.onclick = function() {
@@ -132,5 +211,17 @@ clear_button.onclick = function() {
         clickedCells[i].classList.remove("selected-cell")
         clickedCells[i].classList.add("cell-square")
     }
+    selected_state = [
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+        [false, false, true, false, false],
+        [false, false, false, false, false],
+        [false, false, false, false, false],
+    ];
 }
+
+exit_button.onclick = function() {
+    bingo_div.style.display = "none"
+}
+    
 }
