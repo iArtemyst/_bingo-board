@@ -55,15 +55,19 @@ td {
     text-align: center;
     vertical-align: middle;
     padding: .5em;
+    aspect-ratio: 1/1;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: large;
     font-weight: bold;
 }
 
+td .content {
+    aspect-ratio: 1/1;
+}
+
 .cell-square {
     position: relative;
     text-align: center;
-    width: 20%;
     color: var(--text-color);
     padding-left: 1em;
     padding-right: 1em;
@@ -76,20 +80,15 @@ td {
     transition: all 200ms 0s;
 }
 
-.cell-square:hover {
+.cell-square:active {
     box-shadow: inset 1px 1px 0px #00000020, inset -1px -1px 0px #FFFFFF50;
     background-color: var(--base-color);
 }
 
-.cell-square:active {
-    box-shadow: inset 1px 1px 3px #00000030, inset -1px -1px 3px #FFFFFF60;
-    background-color: var(--base-color);
-}
 
 .selected-cell {
     position: relative;
     text-align: center;
-    width: 20%;
     background-color: var(--primary-color);
     padding-left: 1em;
     padding-right: 1em;
@@ -103,15 +102,11 @@ td {
     transition: all 200ms 0s;
 }
 
-.selected-cell:hover {
+.selected-cell:active {
     box-shadow: 1px 1px 2px #00000030, -1px -1px 2px #FFFFFF50;
     background-color: var(--base-variant2);
 }
 
-.selected-cell:active {
-    box-shadow: inset 1px 1px 2px #00000090, inset -1px -1px 2px #FFFFFF70;
-    background-color: var(--base-variant2);
-}
 
 .free-cell
 {
@@ -166,7 +161,7 @@ td {
     box-shadow: 1px 1px 3px #00000010, -1px -1px 3px #FFFFFF30;
 }
 
-.my-button:hover{
+.my-button:active{
     background-color: var(--base-color);
     scale: 90%;
     box-shadow: inset 1px 1px 0px #00000020, inset -1px -1px 0px #FFFFFF50;
@@ -194,7 +189,7 @@ td {
     box-shadow: 1px 1px 3px #00000010, -1px -1px 3px #FFFFFF30;
 }
 
-.theme-button:hover{
+.theme-button:active{
     scale: 90%;
     background-color: var(--base-color);
     box-shadow: inset 1px 1px 0px #00000020, inset -1px -1px 0px #FFFFFF50;
@@ -202,10 +197,10 @@ td {
 
 
 .bingo-div{
-    background-color: var(--base-variant);
+    background-color: var(--base-color);
     border: none;
-    width: 40%;
-    height: 30%;
+    width: fit-content;
+    height: fit-content;
     padding: 2em;
     border-radius: 3em;
     justify-items: center;
@@ -217,29 +212,29 @@ td {
     left: 50%;
     top: 50%;
     translate: -50% -50%;
+    box-shadow: 0px 0px 15px #00000060
 
 }
 
 .bingo-text{
-    font-size: x-large;
+    font-size: 3em;
     border: none;
     color: var(--text-color);
-    width: auto;
-    height: auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    translate: -50% -50%;
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+    justify-self: center;
     text-align: center;
-    z-index: 5;
-    font-weight: 600;
+    padding-inline: 1em;
+    padding-block: .5em;
+    font-weight: bolder;
     text-wrap: nowrap;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-shadow: 1px 1px 3px #00000010, -1px -1px 3px #FFFFFF30;
 }
 
 .exit-button{
     font-size: medium;
-    background-color: var(--base-color);
     border: none;
     color: var(--text-color);
     padding-left: .75em;
@@ -257,31 +252,15 @@ td {
     position: absolute;
     right: 0em;
     top: 0em;
-    z-index: 5;
+    z-index: 10;
+    box-shadow: 1px 1px 3px #00000010, -1px -1px 3px #FFFFFF30;
 }
 
 
-.exit-button:hover {
-    font-size: medium;
+.exit-button:hover, .exit-button:active {
     background-color: var(--base-variant);
-    border: none;
     color: var(--hover-text);
-    padding-left: .75em;
-    padding-right: .75em;
-    padding-top: .35em;
-    padding-bottom: .35em;
-    width: auto;
-    height: auto;
-    margin-top: 1.5em;
-    margin-right: 1.5em;
-    border-radius: 1em;
-    font-weight: 600;
-    text-wrap: nowrap;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    position: absolute;
-    right: 0em;
-    top: 0em;
-    z-index: 5;
+    box-shadow: inset 1px 1px 0px #00000020, inset -1px -1px 0px #FFFFFF50;
 }
 
 .main-container {
