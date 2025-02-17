@@ -8,29 +8,35 @@
     </head>
 
     <body id="myBody">
-        <div class="w-dvw h-auto relative flex justify-center content-center pt-3">
-            <h1 class="text-4xl font-bold w-auto h-auto">
-                BINGO!
-            </h1>
-            <button id="themeButton" class="theme-button">
-                Switch Theme
-            </button>
-        </div>
-        <div class="w-[dvw] h-[85%] flex px-4 py-6 justify-self-center">
-            <table id="bingoTable"></table>
-        </div>
-        <div class="w-[70%] h-auto flex absolute left-[50%] -translate-x-[50%] justify-evenly">
-            <button id="clearButton" class="my-button">
-                Clear Board
-            </button>
-            <button id="refreshButton" class="my-button">
-                 New Board
-            </button>
-        </div>
-        <div id="bingoDiv" style="display:none" class="bingo-div">
-            <button class="exit-button" id="exitButton">X</button>
-            <p class="bingo-text">YOU GOT A BINGO!</p>
-        </div>
+            <main class="main-container">
+                <div class="w-[90%] h-auto relative flex justify-self-center content-center mt-[1.5em] px-[3em] z-20">
+                    <h1 class="absolute left-[50%] -translate-x-[50%] text-[3em] -mt-[.375em] font-bold w-fit h-fit">
+                        BINGO!
+                    </h1>
+                    <button id="themeButton" class="theme-button">
+                        Switch Theme
+                    </button>
+                </div>
+
+                <div class="absolute left-0 right-0 top-0 bottom-0 flex py-[6em] px-[2em]">
+                        <table id="bingoTable"></table>
+                </div>
+
+                <div class="absolute left-[50%] -translate-x-[50%] bottom-0 w-[50%] h-auto flex mb-[1.5em] justify-evenly">
+                    <button id="clearButton" class="my-button">
+                        Clear Board
+                    </button>
+                    <button id="refreshButton" class="my-button">
+                         New Board
+                    </button>
+                </div>
+
+                <div id="bingoDiv" style="display:none" class="bingo-div">
+                    <button class="exit-button" id="exitButton">X</button>
+                    <p class="bingo-text">YOU GOT A BINGO!</p>
+                </div>
+
+            </main>
         <script src="bingoCell.js"></script>
     </body>
 </html>
