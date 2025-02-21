@@ -21,7 +21,7 @@
     --primary-color: #333333;
     --accent-color: #00ff6a;
     --border-color: #ffffff;
-    --background-color: #fcfcfc;
+    --background-color: #eeeeee;
     --hover-text: #0f0f0f;
     background-color: var(--background-color);
     color: var(--text-color);
@@ -76,12 +76,12 @@ td .content {
     font-weight: 600;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-wrap: balance;
-    box-shadow: 1px 1px 3px #00000010, -1px -1px 3px #FFFFFF30;
+    box-shadow: 3px 3px 5px #00000050, -1px -2px 2px #FFFFFF70;
     transition: all 200ms 0s;
 }
 
 .cell-square:active {
-    box-shadow: inset 1px 1px 0px #00000020, inset -1px -1px 0px #FFFFFF50;
+    box-shadow: inset 2px 2px 4px #00000050, inset -1px -1px 2px #FFFFFF80;
     background-color: var(--base-color);
 }
 
@@ -98,7 +98,7 @@ td .content {
     font-weight: 600;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-wrap: balance;
-    box-shadow: inset 1px 1px 4px #00000090, inset -1px -1px 4px #FFFFFF70;
+    box-shadow: inset 2px 2px 8px #00000090, inset -2px -2px 8px #FFFFFF50;
     transition: all 200ms 0s;
 }
 
@@ -158,13 +158,13 @@ td .content {
     font-weight: 600;
     text-wrap: nowrap;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    box-shadow: 1px 1px 3px #00000010, -1px -1px 3px #FFFFFF30;
+    box-shadow: 3px 3px 5px #00000050, -1px -2px 2px #FFFFFF70;
 }
 
 .my-button:active{
     background-color: var(--base-color);
     scale: 90%;
-    box-shadow: inset 1px 1px 0px #00000020, inset -1px -1px 0px #FFFFFF50;
+    box-shadow: inset 2px 2px 4px #00000050, inset -1px -1px 2px #FFFFFF80;
 }
 
 
@@ -186,18 +186,18 @@ td .content {
     position: absolute;
     right: 0em;
     top: 0em;
-    box-shadow: 1px 1px 3px #00000010, -1px -1px 3px #FFFFFF30;
+    box-shadow: 3px 3px 5px #00000050, -1px -2px 2px #FFFFFF70;
 }
 
 .theme-button:active{
     scale: 90%;
     background-color: var(--base-color);
-    box-shadow: inset 1px 1px 0px #00000020, inset -1px -1px 0px #FFFFFF50;
+    box-shadow: inset 1px 1px 2px #00000050, inset -1px -1px 2px #FFFFFF80;
 }
 
 
 .bingo-div{
-    background-color: var(--base-color);
+    background-color: var(--background-color);
     border: none;
     width: fit-content;
     height: fit-content;
@@ -237,8 +237,8 @@ td .content {
     font-size: medium;
     border: none;
     color: var(--text-color);
-    padding-left: .75em;
-    padding-right: .75em;
+    padding-left: .8em;
+    padding-right: .8em;
     padding-top: .35em;
     padding-bottom: .35em;
     width: auto;
@@ -253,14 +253,14 @@ td .content {
     right: 0em;
     top: 0em;
     z-index: 10;
-    box-shadow: 1px 1px 3px #00000010, -1px -1px 3px #FFFFFF30;
+    box-shadow: 1px 1px 3px #00000040, -1px -1px 2px #FFFFFF60;
 }
 
 
 .exit-button:hover, .exit-button:active {
     background-color: var(--base-variant);
     color: var(--hover-text);
-    box-shadow: inset 1px 1px 0px #00000020, inset -1px -1px 0px #FFFFFF50;
+    box-shadow: inset 1px 1px 2px #00000040, inset -1px -1px 2px #FFFFFF60;
 }
 
 .main-container {
