@@ -62,6 +62,8 @@ const word_list = [
     "Officer deploys stop sticks",
     `"No ID on me"`,
     "Car flees after being stopped",
+    "Helicopter used in pursuit",
+    "Refuses to give name/ID themselves",
 ]
 
 let shuffledList = word_list
@@ -184,7 +186,6 @@ for (let i = 0; i < 5; i++)
                 }
             }
         }
-      
         row.appendChild(cell)
     }
 
@@ -196,11 +197,6 @@ for (let i = 0; i < 5; i++)
         }
     }
 }
-
-
-
-
-
 
 refresh_button.onclick = function() {
     window.location.reload();
