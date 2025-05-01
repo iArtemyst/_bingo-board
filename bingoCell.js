@@ -64,6 +64,8 @@ const word_list = [
     "Car flees after being stopped",
     "Helicopter used in pursuit",
     "Refuses to give name/ID themselves",
+    "Filming a TikTok video",
+    "Poopy pants",
 ]
 
 let shuffledList = word_list
