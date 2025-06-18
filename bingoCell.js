@@ -66,6 +66,7 @@ const word_list = [
     "Refuses to give name/ID themselves",
     "Filming a TikTok video",
     "Poopy pants",
+    "Unusual weapon",
 ]
 
 let shuffledList = word_list
