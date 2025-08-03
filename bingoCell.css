@@ -65,6 +65,10 @@ td .content {
     aspect-ratio: 1/1;
 }
 
+td:hover{
+    cursor: pointer;
+}
+
 .cell-square {
     position: relative;
     text-align: center;
@@ -167,6 +171,9 @@ td .content {
     box-shadow: inset 2px 2px 4px #00000050, inset -1px -1px 2px #FFFFFF80;
 }
 
+.my-button:hover{
+    cursor: pointer;
+}
 
 .theme-button{
     font-size: medium;
@@ -193,6 +200,10 @@ td .content {
     scale: 90%;
     background-color: var(--base-color);
     box-shadow: inset 1px 1px 2px #00000050, inset -1px -1px 2px #FFFFFF80;
+}
+
+.theme-button:hover{
+    cursor: pointer;
 }
 
 
@@ -262,6 +273,11 @@ td .content {
     color: var(--hover-text);
     box-shadow: inset 1px 1px 2px #00000040, inset -1px -1px 2px #FFFFFF60;
 }
+
+.exit-button:hover{
+    cursor: pointer;
+}
+
 
 .main-container {
     position: absolute;
