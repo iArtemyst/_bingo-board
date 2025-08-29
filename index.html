@@ -4,6 +4,7 @@
     <head>
         <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
         <script src="darkmode.js" defer></script>
+        <script src="wordlists.json" defer></script>
         <link rel="stylesheet" href="bingoCell.css"/>
     </head>
 
@@ -16,10 +17,15 @@
                     <button id="themeButton" class="theme-button">
                         Switch Theme
                     </button>
+
+                    <select name="wordBankSelect" id="wordBankSelect">
+                        <option value="football">Football</option>
+                        <option value="livePD">Live PD</option>
+                    </select>
                 </div>
 
                 <div class="absolute left-0 right-0 top-0 bottom-0 flex py-[6em] px-[2em]">
-                        <table id="bingoTable"></table>
+                    <table id="bingoTable"></table>
                 </div>
 
                 <div class="absolute left-[50%] -translate-x-[50%] bottom-0 w-[50%] h-auto flex mb-[1.5em] justify-evenly">
@@ -27,7 +33,7 @@
                         Clear Board
                     </button>
                     <button id="refreshButton" class="my-button">
-                         New Board
+                        New Board
                     </button>
                 </div>
 

@@ -1,4 +1,4 @@
-const word_list = [
+const word_list_1 = [
     "Call at convenience store",
     "5 or more censored bleeps for a person",
     "K9 searches suspect",
@@ -71,160 +71,239 @@ const word_list = [
     "Group of cars is asked to leave premises",
 ]
 
-let shuffledList = word_list
-    .map(value => ({value, sort: Math.random() }))
-    .sort((a,b) => a.sort - b.sort)
-    .map((value) => value.value)
+const word_list_2= [
+        "It's All Football",    
+        "It's All Football",    
+        "It's All Football",    
+        "It's All Football",    
+        "It's All Football",
+        "It's All Football",    
+        "It's All Football",    
+        "It's All Football",    
+        "It's All Football",    
+        "It's All Football",
+        "It's All Football",    
+        "It's All Football",    
+        "It's All Football",    
+        "It's All Football",    
+        "It's All Football",
+        "It's All Football",    
+        "It's All Football",    
+        "It's All Football",    
+        "It's All Football",    
+        "It's All Football",
+        "It's All Football",    
+        "It's All Football",    
+        "It's All Football",    
+        "It's All Football",    
+        "It's All Football"
+]
 
 
-window.onload = function ()
-{
-let table = document.getElementById("bingoTable")
-let refresh_button = document.getElementById("refreshButton")
-let clear_button = document.getElementById("clearButton")
-let exit_button = document.getElementById("exitButton")
-let bingo_div = document.getElementById("bingoDiv")
-// let bingo_div = document.getElementById("bingoWinDiv")
 
-let selected_state = 
-[
-    [false, false, false, false, false],
-    [false, false, false, false, false],
-    [false, false, true, false, false],
-    [false, false, false, false, false],
-    [false, false, false, false, false],
-];
+// import './wordlists.json';
 
-for (let i = 0; i < 5; i++)
-{
-    let row = document.createElement("tr")
+// const { word_lists } =  require('./wordlists.json');
 
-    table.appendChild(row)
 
-    for (let j = 0; j < 5; j++)
-    {
-        let cell = document.createElement("td");
-        let textContainer = document.createElement("div")
 
-        if (i == 2 && j == 2) {
-            textContainer.innerHTML = `Free to Go!`
-            cell.classList.add("free-cell")
-        }
-        else {
-            textContainer.innerHTML = `${shuffledList[i * 5 + j]}`
-            cell.classList.add("cell-square")
-        }  
+window.onload = function () {
+    let table = document.getElementById("bingoTable")
+    let refresh_button = document.getElementById("refreshButton")
+    let clear_button = document.getElementById("clearButton")
+    let exit_button = document.getElementById("exitButton")
+    let bingo_div = document.getElementById("bingoDiv")
+    let word_bank_select = document.getElementById("wordBankSelect");
+    let local_word_bank_index = localStorage.getItem('wordbank_index')
 
-        cell.appendChild(textContainer)
-        
-        cell.onclick = () =>
-        { 
-            if (bingo_div.style.display != "none") {
-                return
-            }
+    let word_list_selection = [
+        // word_lists.football,
+        // word_lists.livePD,
+        // football,
+        // livePD,
+        word_list_2,
+        word_list_1
+    ]
+    
+    let selected_word_bank = word_list_selection[0]
 
-            if (i !== 2 || j !== 2)
+    if (local_word_bank_index != null) {
+        selected_word_bank = word_list_selection[local_word_bank_index]
+    }
+
+    word_bank_select.selectedIndex = local_word_bank_index
+
+    create_bingoboard(selected_word_bank)
+
+    word_bank_select.onchange = () => {
+        let new_selection = word_bank_select.selectedIndex
+        localStorage.setItem("wordbank_index", new_selection)
+        console.log(new_selection)
+        selected_word_bank = word_list_selection[new_selection]
+        refresh_bingoboard(selected_word_bank)
+    };
+
+    function create_bingoboard(word_bank) {
+        let new_word_bank = word_bank
+        console.log(new_word_bank) 
+        let shuffledList = word_bank
+            .map(value => ({value, sort: Math.random() }))
+            .sort((a,b) => a.sort - b.sort)
+            .map((value) => value.value)
+
+        let selected_state = 
+        [
+            [false, false, false, false, false],
+            [false, false, false, false, false],
+            [false, false, true, false, false],
+            [false, false, false, false, false],
+            [false, false, false, false, false],
+        ];
+
+        for (let i = 0; i < 5; i++)
+        {
+            let row = document.createElement("tr")
+            table.appendChild(row)
+            for (let j = 0; j < 5; j++)
             {
-                selected_state[i][j] = !selected_state[i][j];
-            }
-            
-            if (cell.classList.contains("selected-cell"))
-            {
-                cell.classList.remove("selected-cell")
-                cell.classList.add("cell-square")
-            }
-            else
-            {
-                cell.classList.remove("cell-square")
-                cell.classList.add("selected-cell")
+                let cell = document.createElement("td");
+                let textContainer = document.createElement("div")
 
-                let bingo_column = true;
-                for (let r = 0; r < 5; r++)
-                {
-                    if (!selected_state[r][j])
-                    {
-                        bingo_column = false;
-                    }
+                if (i == 2 && j == 2) {
+                    textContainer.innerHTML = `Free to Go!`
+                    cell.classList.add("free-cell")
                 }
+                else {
+                    textContainer.innerHTML = `${shuffledList[i * 5 + j]}`
+                    cell.classList.add("cell-square")
+                }  
 
-                let bingo_row = true;
-                for (let c = 0; c < 5; c++)
-                {
-                    if (!selected_state[i][c])
-                    {
-                        bingo_row = false;
+                cell.appendChild(textContainer)
+                
+                cell.onclick = () =>
+                { 
+                    if (bingo_div.style.display != "none") {
+                        return
                     }
-                }
 
-                let bingo_diagonal1 = false;
-                if (i == j)
-                {
-                    bingo_diagonal1 = true;
-                    for (let d = 0; d < 5; d++)
+                    if (i !== 2 || j !== 2)
                     {
-                        if (!selected_state[d][d]) {
-                            bingo_diagonal1 = false;
+                        selected_state[i][j] = !selected_state[i][j];
+                    }
+                    
+                    if (cell.classList.contains("selected-cell"))
+                    {
+                        cell.classList.remove("selected-cell")
+                        cell.classList.add("cell-square")
+                    }
+                    else
+                    {
+                        cell.classList.remove("cell-square")
+                        cell.classList.add("selected-cell")
+
+                        let bingo_column = true;
+                        for (let r = 0; r < 5; r++)
+                        {
+                            if (!selected_state[r][j])
+                            {
+                                bingo_column = false;
+                            }
+                        }
+
+                        let bingo_row = true;
+                        for (let c = 0; c < 5; c++)
+                        {
+                            if (!selected_state[i][c])
+                            {
+                                bingo_row = false;
+                            }
+                        }
+
+                        let bingo_diagonal1 = false;
+                        if (i == j)
+                        {
+                            bingo_diagonal1 = true;
+                            for (let d = 0; d < 5; d++)
+                            {
+                                if (!selected_state[d][d]) {
+                                    bingo_diagonal1 = false;
+                                }
+                            }
+                        }
+
+                        let bingo_diagonal2 = false;
+                        if (i + j == 4)
+                        {
+                            if (selected_state[0][4] && 
+                                selected_state[1][3] && 
+                                selected_state[2][2] && 
+                                selected_state[3][1] && 
+                                selected_state[4][0])
+                            {
+                                bingo_diagonal2 = true;
+                            }
+                        }
+                        
+
+
+                        if (bingo_column || bingo_row || bingo_diagonal1 || bingo_diagonal2)
+                        {
+                            setTimeout(() => {
+                                bingo_div.style.display = "flex"
+                            }, 2);
                         }
                     }
                 }
+                row.appendChild(cell)
+            }
 
-                let bingo_diagonal2 = false;
-                if (i + j == 4)
+            window.onclick = (e) => {
+                console.log(window.getComputedStyle(e.target).getPropertyValue("z-index"))
+                if (bingo_div.style.display !== "none" && e.target.id !="themeButton" && window.getComputedStyle(e.target).getPropertyValue("z-index") != 5)
                 {
-                    if (selected_state[0][4] && 
-                        selected_state[1][3] && 
-                        selected_state[2][2] && 
-                        selected_state[3][1] && 
-                        selected_state[4][0])
-                    {
-                        bingo_diagonal2 = true;
-                    }
-                }
-                
-
-
-                if (bingo_column || bingo_row || bingo_diagonal1 || bingo_diagonal2)
-                {
-                    setTimeout(() => {
-                        bingo_div.style.display = "flex"
-                    }, 2);
+                    bingo_div.style.display = "none"
                 }
             }
         }
-        row.appendChild(cell)
     }
 
-    window.onclick = (e) => {
-        console.log(window.getComputedStyle(e.target).getPropertyValue("z-index"))
-        if (bingo_div.style.display !== "none" && e.target.id !="themeButton" && window.getComputedStyle(e.target).getPropertyValue("z-index") != 5)
-        {
-            bingo_div.style.display = "none"
+    function clear_bingoboard() {
+        while (table.firstChild) {
+            table.firstChild.remove()
         }
     }
-}
 
-refresh_button.onclick = function() {
-    window.location.reload();
-}
-
-clear_button.onclick = function() {
-    let clickedCells = Array.from(document.getElementsByClassName("selected-cell"))
-    for (let i = 0; i < clickedCells.length; i++)
-    {
-        clickedCells[i].classList.remove("selected-cell")
-        clickedCells[i].classList.add("cell-square")
+    function refresh_bingoboard() {
+        clear_bingoboard()
+        create_bingoboard(selected_word_bank)
     }
-    selected_state = [
-        [false, false, false, false, false],
-        [false, false, false, false, false],
-        [false, false, true, false, false],
-        [false, false, false, false, false],
-        [false, false, false, false, false],
-    ];
-}
 
-exit_button.onclick = function() {
-    bingo_div.style.display = "none"
-}
-    
+
+    refresh_button.onclick = function() {
+        refresh_bingoboard()
+    }
+
+    clear_button.onclick = function() {
+        let clickedCells = Array.from(document.getElementsByClassName("selected-cell"))
+        for (let i = 0; i < clickedCells.length; i++)
+        {
+            clickedCells[i].classList.remove("selected-cell")
+            clickedCells[i].classList.add("cell-square")
+        }
+        selected_state = [
+            [false, false, false, false, false],
+            [false, false, false, false, false],
+            [false, false, true, false, false],
+            [false, false, false, false, false],
+            [false, false, false, false, false],
+        ];
+    }
+
+    // clear_button.onclick = function() {
+    //     clear_bingoboard()
+    // }
+
+    exit_button.onclick = function() {
+        bingo_div.style.display = "none"
+    }
 }
