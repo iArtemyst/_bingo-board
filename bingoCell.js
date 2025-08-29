@@ -1,113 +1,14 @@
-const word_list_1 = [
-    "Call at convenience store",
-    "5 or more censored bleeps for a person",
-    "K9 searches suspect",
-    "You see something on fire",
-    "No ID",
-    "Cop running or jogging",
-    "Wad of cash",
-    "Call at a fast food restaurant",
-    "Shoplifting",
-    "Resisting arrest",
-    "Pulled over on a bicycle",
-    "Motorcycle chase",
-    "Find pills",
-    `"Not my car"`,
-    "Possession with intent to distribute",
-    "Cop drives off road or over median",
-    "Forced entry",
-    "Sovereign Citizen",
-    "Eating while talking to a cop",
-    "Pit maneuver",
-    "Expired or suspended license",
-    "Stumbling drunk",
-    "Reports of shots fired",
-    "Field sobriety test",
-    "Vehicle in disrepair",
-    "Find marijuana",
-    "Domestic dispute or disturbance",
-    "Someone wearing an ankle monitor",
-    "On parole or probation",
-    "Call about an animal",
-    "Hoarder's vehicle",
-    "Talking to cops while on cell phone",
-    "Trespassing",
-    "Cop pours out beer or liquor",
-    "Someone other than a cop pours out a liquid",
-    "Someone calling out the show while in scene",
-    "Putting items onto hood of the vehicle",
-    "Visible butt crack",
-    "Didn't use turn signal",
-    "Sight of blood",
-    "Someone is put onto a stretcher",
-    "Call at a Wal-Mart",
-    "Find crack or meth",
-    "Tossing something away during a chase",
-    "Cop wearing a helmet",
-    "Cop using a translator",
-    "Chasing suspect through thick brush or forest",
-    "Noise distrubance",
-    "Vehicle that is not upright",
-    "Child in pulled over car",
-    "Finding a weapon on a person",
-    "Finds heroin",
-    "Finds fentanyl",
-    "Offers food to cops",
-    "Responding to an overdose",
-    "Responding to a burglary",
-    "Located stolen weapon",
-    "Cop gives attitude back",
-    "Cop is called off to another scene",
-    "Suspect goes to homebase",
-    "Officer deploys stop sticks",
-    `"No ID on me"`,
-    "Car flees after being stopped",
-    "Helicopter used in pursuit",
-    "Refuses to give name/ID themselves",
-    "Filming a TikTok video",
-    "Poopy pants",
-    "Unusual weapon",
-    "Driving on the wrong side of the road",
-    "Group of cars is asked to leave premises",
-]
-
-const word_list_2= [
-        "It's All Football",    
-        "It's All Football",    
-        "It's All Football",    
-        "It's All Football",    
-        "It's All Football",
-        "It's All Football",    
-        "It's All Football",    
-        "It's All Football",    
-        "It's All Football",    
-        "It's All Football",
-        "It's All Football",    
-        "It's All Football",    
-        "It's All Football",    
-        "It's All Football",    
-        "It's All Football",
-        "It's All Football",    
-        "It's All Football",    
-        "It's All Football",    
-        "It's All Football",    
-        "It's All Football",
-        "It's All Football",    
-        "It's All Football",    
-        "It's All Football",    
-        "It's All Football",    
-        "It's All Football"
-]
-
-
 
 // import './wordlists.json';
 
 // const { word_lists } =  require('./wordlists.json');
 
+window.onload = async function () {
 
+    let request = new Request("wordlists.json");
+    let result = await fetch(request);
+    let data = await result.json();
 
-window.onload = function () {
     let table = document.getElementById("bingoTable")
     let refresh_button = document.getElementById("refreshButton")
     let clear_button = document.getElementById("clearButton")
@@ -117,18 +18,24 @@ window.onload = function () {
     let local_word_bank_index = localStorage.getItem('wordbank_index')
 
     let word_list_selection = [
-        // word_lists.football,
-        // word_lists.livePD,
-        // football,
-        // livePD,
-        word_list_2,
-        word_list_1
+        data.livePD,
+        data.football,
     ]
     
+    let free_cell_word = [
+        "Free to Go!",
+        "Free Redzone",
+    ]
+
+    let selected_free_cell_word = free_cell_word[0]
     let selected_word_bank = word_list_selection[0]
 
     if (local_word_bank_index != null) {
         selected_word_bank = word_list_selection[local_word_bank_index]
+        selected_free_cell_word = free_cell_word[local_word_bank_index]
+    }
+    else {
+        localStorage.setItem("wordbank_index", 0)
     }
 
     word_bank_select.selectedIndex = local_word_bank_index
@@ -140,6 +47,7 @@ window.onload = function () {
         localStorage.setItem("wordbank_index", new_selection)
         console.log(new_selection)
         selected_word_bank = word_list_selection[new_selection]
+        selected_free_cell_word = free_cell_word[new_selection]
         refresh_bingoboard(selected_word_bank)
     };
 
@@ -170,7 +78,7 @@ window.onload = function () {
                 let textContainer = document.createElement("div")
 
                 if (i == 2 && j == 2) {
-                    textContainer.innerHTML = `Free to Go!`
+                    textContainer.innerHTML = selected_free_cell_word
                     cell.classList.add("free-cell")
                 }
                 else {

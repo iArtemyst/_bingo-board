@@ -69,6 +69,37 @@ td:hover{
     cursor: pointer;
 }
 
+select {
+    background-color: transparent;
+    border: 1px solid var(--base-variant);
+    border-radius: 16px;
+    padding: .5em 1em .5em 1em;
+    margin: 0;
+    justify-self: start;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+    box-shadow: 3px 3px 5px #00000050, -1px -2px 2px #FFFFFF70;
+    border-right: 12px solid transparent;
+    outline: none;
+    font-weight: 500;
+    color: var(--text-color);
+
+    &::-ms-expand {
+        display: none;
+    }
+}
+
+
+select option {
+    background-color: var(--background-color);
+    font-weight: 500;
+    color: var(--text-color);
+    border-radius: 5px 5px 5px 5px;
+}
+
+
 .cell-square {
     position: relative;
     text-align: center;
@@ -190,7 +221,7 @@ td:hover{
     font-weight: 600;
     text-wrap: nowrap;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    position: absolute;
+    position: relative;
     right: 0em;
     top: 0em;
     box-shadow: 3px 3px 5px #00000050, -1px -2px 2px #FFFFFF70;
