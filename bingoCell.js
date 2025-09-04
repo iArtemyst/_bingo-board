@@ -18,13 +18,13 @@ window.onload = async function () {
     let local_word_bank_index = localStorage.getItem('wordbank_index')
 
     let word_list_selection = [
-        data.livePD,
         data.football,
+        data.livePD,
     ]
     
     let free_cell_word = [
-        "Free to Go!",
         "Free Redzone",
+        "Free to Go!",
     ]
 
     let selected_free_cell_word = free_cell_word[0]
@@ -45,15 +45,13 @@ window.onload = async function () {
     word_bank_select.onchange = () => {
         let new_selection = word_bank_select.selectedIndex
         localStorage.setItem("wordbank_index", new_selection)
-        console.log(new_selection)
         selected_word_bank = word_list_selection[new_selection]
         selected_free_cell_word = free_cell_word[new_selection]
         refresh_bingoboard(selected_word_bank)
     };
 
     function create_bingoboard(word_bank) {
-        let new_word_bank = word_bank
-        console.log(new_word_bank) 
+        let new_word_bank = word_bank 
         let shuffledList = word_bank
             .map(value => ({value, sort: Math.random() }))
             .sort((a,b) => a.sort - b.sort)
