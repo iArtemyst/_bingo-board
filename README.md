@@ -3,4 +3,4 @@ https://iartemyst.github.io/_bingo-board/
 
 
 
-bingo board for my family while they watch a tv show
+bingo board website, now with multiple word bank support
